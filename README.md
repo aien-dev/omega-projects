@@ -2,13 +2,21 @@
 
 Every project anyone builds with Allen at [aienos.com/allen/](https://www.aienos.com/allen/) goes here.
 
-- Each project lives in `projects/<slug>/`: an `index.html` that runs in the browser, the Omega
-  source (`<name>.om`), a `README.md` and a `meta.json` (slug, title, description, submission date,
-  item id; no personal data).
-- Allen never publishes anything. A project arrives as a pull request on a `submissions/<slug>-<id>`
-  branch. Drake reviews every project before it goes live; only Drake's merge to `main` publishes it.
+- Every builder has a home, `projects/<handle>/`, and each project lives in
+  `projects/<handle>/<project>/`: a `README.md` (what it is and who it helps), the source (`index.html`
+  that runs in the browser, Omega `<name>.om`, `.js`, `.css`, notes), and a `meta.json` written by
+  Allen's filing service (handle, project, title, description, date, item id, file list; no personal
+  data). A handle is a chosen name plus a tag tied to the visitor's Allen key (`ada-1a2b3c4d`), or a
+  one-time `anon-...` handle for anonymous builders; never an email address.
+- **Save** commits the project to the builder's branch `u/<handle>`, viewable here at once.
+- **Publish** opens a pull request from `p/<handle>/<project>` to `main`. Allen never merges and never
+  writes `main`; Drake reviews every project and only his merge publishes it ("Built with Allen").
+- Every pull request to `main` runs `project checks` (`.github/workflows/project-checks.yml`):
+  `pull_request` only, read-only token, no secrets, no third-party actions; the checker comes from
+  `main` and enforces the file allowlist, size caps, no external loads, and the secret and personal
+  data scan.
 - Live projects are served by GitHub Pages from `main` at
-  `https://aien-dev.github.io/omega-projects/projects/<slug>/`.
+  `https://aien-dev.github.io/omega-projects/projects/<handle>/<project>/`.
 - Issues filed from [aienos.com/allen/](https://www.aienos.com/allen/) arrive here labelled
   `from-allen`, with an `area:<repo>` label naming the repository they concern, and are transferred
   to the right repository.
