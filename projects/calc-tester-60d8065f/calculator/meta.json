@@ -1,0 +1,15 @@
+{
+  "built_with": "Allen",
+  "description": "A four-function calculator: Omega arithmetic compiled to WebAssembly.",
+  "files": [
+    "README.md",
+    "calc.om",
+    "index.html"
+  ],
+  "handle": "calc-tester-60d8065f",
+  "item": "0fc57c8a88dd56f7b589",
+  "project": "calculator",
+  "saved": "2026-10-26",
+  "title": "Calculator",
+  "v": 1
+}
