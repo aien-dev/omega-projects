@@ -1,0 +1,18 @@
+name: Question
+description: Ask about Omega, Allen or one of Drake's repositories.
+title: "[question] "
+labels: []
+body:
+  - type: input
+    id: area
+    attributes:
+      label: Area
+      description: The repository this concerns (for example omega-mv), or "unknown".
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+    validations:
+      required: true
