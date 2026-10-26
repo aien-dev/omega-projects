@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculator</title>
+<style>body{font:18px/1.5 system-ui,sans-serif;max-width:28rem;margin:2rem auto;padding:0 1rem}
+input,select,button{font:inherit;padding:.3rem}</style>
+<h1>Calculator</h1>
+<p>Whole numbers, computed by Omega compiled to WebAssembly.</p>
+<p><input id=a type=number value=12> <select id=op><option value=plus>+</option><option value=minus>-</option>
+<option value=times>&times;</option><option value=quot>&divide;</option></select> <input id=b type=number value=3>
+<button id=go>=</button> <output id=out></output></p>
+<script>
+const bytes = Uint8Array.from(atob("AGFzbQEAAAABmYCAgAAEYAJ+fgF+YAJ+fgF+YAJ+fgF+YAJ+fgF+A4WAgIAABAABAgMHn4CAgAAEBHBsdXMAAAVtaW51cwABBXRpbWVzAAIEcXVvdAADCsqCgIAABMSAgIAAAwN+AX8BfiAAIQIgASEDAkADQCAFQQBGBEAgAiADfCEGIAIgBoUgAyAGhYNCAFMEQAALIAYiBiAGIQQgBA8LAAsLAAvEgICAAAMDfgF/AX4gACECIAEhAwJAA0AgBUEARgRAIAIgA30hBiACIAaFIAIgA4WDQgBTBEAACyAGIgYgBiEEIAQPCwALCwALxYCAgAADA34BfwF+IAAhAiABIQMCQANAIAVBAEYEQCACIAN+IQYgAlBFBEAgBiACfyADUgRAAAsLIAYiBiAGIQQgBA8LAAsLAAvogICAAAMFfgF/AX4gACECIAEhAwJAA0AgB0EARgRAQgAhBCAEIQUgAyAEUq0hBkECIQcgBqdFDQFBASEHDAELIAdBAUYEQCACIAN/IQggCCIIIAghBUECIQcMAQsgB0ECRgRAIAUPCwALCwAL"), c => c.charCodeAt(0));
+WebAssembly.instantiate(bytes, {}).then(({ instance }) => {
+  const run = () => {
+    const f = instance.exports[document.getElementById('op').value];
+    const a = BigInt(document.getElementById('a').value || 0), b = BigInt(document.getElementById('b').value || 0);
+    document.getElementById('out').textContent = String(f(a, b));
+  };
+  document.getElementById('go').addEventListener('click', run);
+  run();
+});
+</script>
+</html>

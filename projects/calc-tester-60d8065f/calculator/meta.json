@@ -3,10 +3,11 @@
   "description": "A four-function calculator: Omega arithmetic compiled to WebAssembly.",
   "files": [
     "README.md",
-    "calc.om"
+    "calc.om",
+    "index.html"
   ],
   "handle": "calc-tester-60d8065f",
-  "item": "6828a3d2b0b402fc4242",
+  "item": "278e5f0ed949bb47afc2",
   "project": "calculator",
   "saved": "2026-10-26",
   "title": "Calculator",
