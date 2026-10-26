@@ -1,0 +1,16 @@
+fn plus a long b long to long
+ret add a b
+end
+fn minus a long b long to long
+ret sub a b
+end
+fn times a long b long to long
+ret mul a b
+end
+fn quot a long b long to long
+q = long 0
+if ne b 0
+q = div a b
+end
+ret q
+end
