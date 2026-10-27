@@ -1,0 +1,3 @@
+fn one to ulong
+ret 1
+end

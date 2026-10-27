@@ -1,0 +1,14 @@
+{
+  "built_with": "Aien",
+  "description": "Negative control for the 3 per 20 minutes publish limit, request 2.",
+  "files": [
+    "README.md",
+    "rate.om"
+  ],
+  "handle": "anon-df4e1c94c0",
+  "item": "6ce6304125e10bddbc42",
+  "project": "rate-check",
+  "saved": "2026-10-27",
+  "title": "Publish rate check 2",
+  "v": 1
+}
