@@ -27,3 +27,15 @@ Every project anyone builds with Aien at [aienos.com/allen/](https://www.aienos.
 
 Every project stays its author's. By submitting it here the author licences it under
 [Apache-2.0](LICENSE).
+
+## Human-Directed Agentic Engineering
+
+Development follows Human-Directed Agentic Engineering (HDAE): humans define goals,
+architecture, constraints, acceptance criteria, and stopping points; agents implement,
+execute checks, diagnose failures, and revise within those boundaries. Human review
+retains responsibility for claims, acceptance, and release decisions. Project submissions
+still require Drake's review and merge before publication.
+
+For the documented method and a systems-software case study, see Gregory M. Kurtzer,
+[*Ginux: Building an Independent Kernel That Runs Linux Userspace through
+Human-Directed Agentic Engineering* (2026)](https://doi.org/10.5281/zenodo.23682548).
