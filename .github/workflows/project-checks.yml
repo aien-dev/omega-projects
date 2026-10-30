@@ -1,0 +1,36 @@
+# Checks every pull request to main with .github/check_projects.py.
+# pull_request only (never pull_request_target): the run gets a read-only token and no
+# secrets, and no action is used at all: plain git and python3 from the runner image.
+# The checker comes from main, so a pull request cannot loosen the rules it is checked by.
+name: project checks
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: project-checks-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check the pull request's files
+        env:
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          set -eu
+          git init -q work && cd work
+          url="https://github.com/$REPO"
+          git fetch -q --no-tags --depth=2 "$url" "+refs/pull/$PR/merge:refs/check/pr"
+          git fetch -q --no-tags --depth=1 "$url" "+refs/heads/main:refs/check/main"
+          if git cat-file -e refs/check/main:.github/check_projects.py 2>/dev/null; then
+            git show refs/check/main:.github/check_projects.py > ../check.py
+          else
+            echo "main has no checker yet; using this pull request's copy"
+            git show refs/check/pr:.github/check_projects.py > ../check.py
+          fi
+          python3 ../check.py refs/check/pr^1 refs/check/pr "$HEAD_REF"
